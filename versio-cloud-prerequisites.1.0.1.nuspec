@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>versio-cloud-prerequisites</id>
+        <version>1.0.1</version>
+        <title>Versio Cloud Server Prerequisites.</title>
+        <authors>John Hart</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Versio Cloud Server Prerequisites.
+• Microsoft .Net 3.5 
+• Microsoft .Net 4.5 
+• Microsoft Silverlight 
+• Desktop Experience 
+• Media Foundation
+• Microsoft Visual C++ Redistributables (2005, 2008, 2010, 2012)
+• Windows Management Framework 4.0
+• Set power performance to high
+• IIS</description>
+    </metadata>
+    <files>
+        <file src="certificate\GeoTrust_Global_CA.pem" target="certificate\GeoTrust_Global_CA.pem" />
+        <file src="tools\CheckServerPrerequisites.ps1" target="tools\CheckServerPrerequisites.ps1" />
+        <file src="tools\chocolateyInstall.ps1" target="tools\chocolateyInstall.ps1" />
+    </files>
+</package>
