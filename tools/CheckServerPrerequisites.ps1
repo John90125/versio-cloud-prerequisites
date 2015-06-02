@@ -1,8 +1,18 @@
 ﻿# Called at any time something fails
 Function Failed([string] $errmsg, [string] $ScriptName)
 {
-   Write-Warning $errmsg 
-   $host.SetShouldExit(-1)  
+   Write-Warning $errmsg   
+   exit 1
+}
+
+Function isAppInstalled {
+    param(
+     $DisplayName
+    )
+    try{
+    return (((get-itemproperty hklm:\software\wow6432node\microsoft\windows\currentversion\uninstall\*).DisplayName -like "$DisplayName") -or
+            ((get-itemproperty hklm:\software\microsoft\windows\currentversion\uninstall\*).DisplayName -like "$DisplayName"));
+    }catch{}
 }
 
 # Get the current script name
@@ -23,9 +33,9 @@ else
 
 
 # Check for Microsoft Silverlight 
-if (Test-Path -Path 'C:\Program Files (x86)\Microsoft Silverlight\5.1.30514.0\Silverlight.Configuration.exe')
+if (isAppInstalled -DisplayName "Microsoft Silverlight")
 {
-    Write-Host -ForegroundColor Green "Microsoft Silverlight found"  
+    Write-Host -ForegroundColor Green "Microsoft Silverlight found"    
 }
 else
 {
